@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{61679cc9-380c-4407-b341-055418d044c3}</ProjectGuid>
-    <RootNamespace>strlenvectorization</RootNamespace>
+    <ProjectGuid>{cab7356a-0acb-4b11-a7d2-975b54788469}</ProjectGuid>
+    <RootNamespace>absoptimization</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
