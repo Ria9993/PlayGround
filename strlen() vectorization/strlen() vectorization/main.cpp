@@ -22,10 +22,10 @@ int my_strlen(const char* const str)
     }
 
     /*  Magic bits
-        11111110 11111110 11111110 11111110
+        11111110 11111110 11111110 11111111
         1-bit : Propagate Carry 1-bit to 0-bit hall
         0-bit : Stop propagation of carry to next byte */
-    const int32_t magic = ~0x01010101;
+    const int32_t magic = ~0x01010100;
     /*  Checker bits
         10000000 10000000 10000000 10000000
         If string is not extended ascii, String will not have last-bit of byte.
