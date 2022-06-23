@@ -62,7 +62,7 @@ int main()
         ret_a = a ^ xor_mask;
         ret_b = b ^ xor_mask;
     }
-    printf("ASM Code Without Branch\n");
+    printf("C Code Without Branch\n");
     printf("a = %d, b = %d\n", ret_a, ret_b);
 
     return 0;
