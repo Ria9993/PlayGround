@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <limits.h>
 
+/* 
+Reference : Clang x86-64
+*/
+
 int main()
 {
     int32_t dividend = INT_MAX; // INT_MAX = 2'147'483'647

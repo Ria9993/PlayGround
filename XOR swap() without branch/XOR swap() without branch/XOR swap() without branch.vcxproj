@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9b937826-5cdd-439d-8cb3-06c12c4926a0}</ProjectGuid>
-    <RootNamespace>strlenvectorization</RootNamespace>
+    <ProjectGuid>{647e7df7-0cba-4c0e-9d4a-7ba835ca490b}</ProjectGuid>
+    <RootNamespace>XORswapwithoutbranch</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
