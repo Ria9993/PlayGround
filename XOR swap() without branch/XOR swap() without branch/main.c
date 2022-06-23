@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdint.h>
+#include <limits.h>
 
 /* 
 Reference : À¯¿µÃµ(Megayuchi)
@@ -9,11 +10,11 @@ https://megayuchi.com/2015/09/10/xor%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%
 
 int main()
 {
-    int32_t a = 5;
-    int32_t b = 13;
+    int a = 5;
+    int b = 13;
 
-    int32_t ret_a;
-    int32_t ret_b;
+    int ret_a;
+    int ret_b;
 
     printf("Original\n");
     printf("a = %d, b = %d\n", a, b);
@@ -22,7 +23,7 @@ int main()
     if (a < b)
     {
         //swap
-        int32_t tmp = a;
+        int tmp = a;
         ret_a = b;
         ret_b = tmp;
     }
@@ -57,8 +58,8 @@ int main()
 
     /* C Code without Branch (by me) */
     {
-        const int32_t carry_mask = (a - b) >> 31; // IF a < b, THEN 0xFFFFFFFF, ELSE 0
-        const int32_t xor_mask = (a ^ b) & carry_mask; // IF a < b, THEN a ^ b, ELSE 0
+        const int carry_mask = (a - b) >> (CHAR_BIT * sizeof(int) - 1); // IF a < b, THEN 0xFFFFFFFF, ELSE 0
+        const int xor_mask = (a ^ b) & carry_mask; // IF a < b, THEN a ^ b, ELSE 0
         ret_a = a ^ xor_mask;
         ret_b = b ^ xor_mask;
     }
