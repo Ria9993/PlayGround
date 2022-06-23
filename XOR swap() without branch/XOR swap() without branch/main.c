@@ -19,7 +19,7 @@ int main()
     printf("Original\n");
     printf("a = %d, b = %d\n", a, b);
 
-    /* Original C Code */
+    /* C Original Code */
     if (a < b)
     {
         //swap
@@ -27,7 +27,7 @@ int main()
         ret_a = b;
         ret_b = tmp;
     }
-    printf("Original C Code\n");
+    printf("C Original Code\n");
     printf("a = %d, b = %d\n", ret_a, ret_b);
 
     /* ASM Code without Branch */
@@ -56,9 +56,9 @@ int main()
     printf("ASM Code Without Branch\n");
     printf("a = %d, b = %d\n", ret_a, ret_b);
 
-    /* C Code without Branch (by me) */
+    /* C Code without Branch */
     {
-        const int carry_mask = (a - b) >> (CHAR_BIT * sizeof(int) - 1); // IF a < b, THEN 0xFFFFFFFF, ELSE 0
+        const int carry_mask = (a - b) >> ((CHAR_BIT * sizeof(int)) - 1); // IF a < b, THEN 0xFFFFFFFF, ELSE 0
         const int xor_mask = (a ^ b) & carry_mask; // IF a < b, THEN a ^ b, ELSE 0
         ret_a = a ^ xor_mask;
         ret_b = b ^ xor_mask;
