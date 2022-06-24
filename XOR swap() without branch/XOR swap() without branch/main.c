@@ -23,9 +23,9 @@ int main()
     if (a < b)
     {
         //swap
-        int tmp = a;
-        ret_a = b;
-        ret_b = tmp;
+        ret_a = a ^ b;
+        ret_b = b ^ ret_a;
+        ret_a = ret_a ^ ret_b;
     }
     printf("C Original Code\n");
     printf("a = %d, b = %d\n", ret_a, ret_b);
