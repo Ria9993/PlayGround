@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Static Memory Pool", "Static Memory Pool\Static Memory Pool.vcxproj", "{B7A25893-7DFF-4B0B-A034-8C3310C4E3DC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pow2 Static Memory Pool", "pow2 Static Memory Pool\pow2 Static Memory Pool.vcxproj", "{453CF435-986B-4D05-A395-0CEC4323F094}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Variable Static Memory Pool", "Variable Static Memory Pool\Variable Static Memory Pool.vcxproj", "{3F3FAE4C-D8E8-4AC2-A1A9-3AA0066D3222}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +23,14 @@ Global
 		{B7A25893-7DFF-4B0B-A034-8C3310C4E3DC}.Release|x64.Build.0 = Release|x64
 		{B7A25893-7DFF-4B0B-A034-8C3310C4E3DC}.Release|x86.ActiveCfg = Release|Win32
 		{B7A25893-7DFF-4B0B-A034-8C3310C4E3DC}.Release|x86.Build.0 = Release|Win32
-		{453CF435-986B-4D05-A395-0CEC4323F094}.Debug|x64.ActiveCfg = Debug|x64
-		{453CF435-986B-4D05-A395-0CEC4323F094}.Debug|x64.Build.0 = Debug|x64
-		{453CF435-986B-4D05-A395-0CEC4323F094}.Debug|x86.ActiveCfg = Debug|Win32
-		{453CF435-986B-4D05-A395-0CEC4323F094}.Debug|x86.Build.0 = Debug|Win32
-		{453CF435-986B-4D05-A395-0CEC4323F094}.Release|x64.ActiveCfg = Release|x64
-		{453CF435-986B-4D05-A395-0CEC4323F094}.Release|x64.Build.0 = Release|x64
-		{453CF435-986B-4D05-A395-0CEC4323F094}.Release|x86.ActiveCfg = Release|Win32
-		{453CF435-986B-4D05-A395-0CEC4323F094}.Release|x86.Build.0 = Release|Win32
+		{3F3FAE4C-D8E8-4AC2-A1A9-3AA0066D3222}.Debug|x64.ActiveCfg = Debug|x64
+		{3F3FAE4C-D8E8-4AC2-A1A9-3AA0066D3222}.Debug|x64.Build.0 = Debug|x64
+		{3F3FAE4C-D8E8-4AC2-A1A9-3AA0066D3222}.Debug|x86.ActiveCfg = Debug|Win32
+		{3F3FAE4C-D8E8-4AC2-A1A9-3AA0066D3222}.Debug|x86.Build.0 = Debug|Win32
+		{3F3FAE4C-D8E8-4AC2-A1A9-3AA0066D3222}.Release|x64.ActiveCfg = Release|x64
+		{3F3FAE4C-D8E8-4AC2-A1A9-3AA0066D3222}.Release|x64.Build.0 = Release|x64
+		{3F3FAE4C-D8E8-4AC2-A1A9-3AA0066D3222}.Release|x86.ActiveCfg = Release|Win32
+		{3F3FAE4C-D8E8-4AC2-A1A9-3AA0066D3222}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
