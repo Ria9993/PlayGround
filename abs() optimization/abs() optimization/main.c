@@ -3,14 +3,37 @@
 #include <limits.h>
 
 int main() {
-    int n;
-    scanf("%d", &n);
+    int n_ori;
+    scanf("%d", &n_ori);
 
-    int mask = n >> ((CHAR_BIT * sizeof(int)) - 1); // Bit filling by MSB
+    /* VER1 */
+    {
+        int n = n_ori;
 
-    // Trans sign only negative number
-    n ^= mask;
-    n += mask & 1;
+        int mask = n >> ((CHAR_BIT * sizeof(int)) - 1); // Bit filling by MSB
 
-    printf("%d", n);
+        // Trans sign only negative number
+        n ^= mask;
+        n += mask & 1;
+
+        printf("VER1:%d\n", n);
+    }
+
+    /* VER2 
+        ref:MSVC */
+    {
+        int n = n_ori;
+        
+        __asm
+        {
+            mov eax, [n]
+            cdq //extend eax to edx(make bitmask by signbit)
+            xor eax, edx
+            sub eax, edx
+            mov [n], eax
+        }
+
+        printf("VER2:%d\n", n);
+    }
+    return 0;
 }
