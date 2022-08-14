@@ -5,8 +5,8 @@
 #include <emmintrin.h> // SSE2
 
 /* Find First Set
-undefined behavior : IF n == 0
-ref : linux kernel */
+    Return index of first set
+    IF n == 0, Undefined behavior */
 uint32_t ffs(uint32_t n)
 {
     uint32_t ret = 0;
@@ -39,6 +39,8 @@ uint32_t ffs(uint32_t n)
     return ret;
 }
 
+/* Return index of the value 
+    IF the value is not in array, return array_size */
 uint32_t my_find32(
     const int32_t* const arr,
     const unsigned int arr_size,
@@ -58,22 +60,22 @@ uint32_t my_find32(
         {
             return arr_p - arr;
         }
-    }
+	}
 
-    // Compare 128bit at time
-    for (; arr_p < (arr + arr_size) - INT32_PER_SSE; arr_p += INT32_PER_SSE)
-    {
-        __m128i packed_data = _mm_load_si128((__m128i*)arr_p);
-        __m128i packed_value = _mm_set1_epi32(value);
+	// Compare 128bit at time
+	for (; arr_p < (arr + arr_size) - INT32_PER_SSE; arr_p += INT32_PER_SSE)
+	{
+		const __m128i packed_data = _mm_load_si128((__m128i*)arr_p);
+		const __m128i packed_value = _mm_set1_epi32(value);
 
-        __m128i packed_compare = _mm_cmpeq_epi32(packed_data, packed_value);
-        int32_t compare_mask = _mm_movemask_ps(*((__m128*) & packed_compare));
+		const __m128i packed_compare = _mm_cmpeq_epi32(packed_data, packed_value);
+		const int32_t compare_mask = _mm_movemask_ps(*(__m128*)(&packed_compare));
 
-        if (compare_mask != 0)
-        {
-            uint32_t first_set = ffs(compare_mask);
-            return (arr_p + first_set) - arr;
-        }
+		if (compare_mask != 0)
+		{
+			const uint32_t first_set = ffs(compare_mask);
+			return (arr_p + first_set) - arr;
+		}
     }
 
     // Process if they are any remains
@@ -85,14 +87,15 @@ uint32_t my_find32(
         }
     }
 
-    assert(0);
+    // Value is not in Array
+    return arr_p - arr;
 }
 
 int main()
 {
-    const int32_t arr[] = { 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+    const int32_t arr[] = { 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
 
-    unsigned int find_idx = my_find32(arr, sizeof(arr), 5);
+    unsigned int find_idx = my_find32(arr, sizeof(arr) / sizeof(int32_t), 5);
 
     printf("%u", find_idx); // 15
 
