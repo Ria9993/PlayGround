@@ -5,61 +5,61 @@
 #include <emmintrin.h> // SSE2
 
 /* Find First Set
-    Return index of first set
-    IF n == 0, Undefined behavior */
+	Return index of first set
+	IF n == 0, Undefined behavior */
 uint32_t ffs(uint32_t n)
 {
-    uint32_t ret = 0;
+	uint32_t ret = 0;
 
-    if ((n & 0x0000FFFF) == 0)
-    {
-        n >>= 16;
-        ret += 16;
-    }
-    if ((n & 0x000000FF) == 0)
-    {
-        n >>= 8;
-        ret += 8;
-    }
-    if ((n & 0x0000000F) == 0)
-    {
-        n >>= 4;
-        ret += 4;
-    }
-    if ((n & 0x00000003) == 0)
-    {
-        n >>= 2;
-        ret += 2;
-    }
-    if ((n & 0x00000001) == 0)
-    {
-        ret += 1;
-    }
+	if ((n & 0x0000FFFF) == 0)
+	{
+		n >>= 16;
+		ret += 16;
+	}
+	if ((n & 0x000000FF) == 0)
+	{
+		n >>= 8;
+		ret += 8;
+	}
+	if ((n & 0x0000000F) == 0)
+	{
+		n >>= 4;
+		ret += 4;
+	}
+	if ((n & 0x00000003) == 0)
+	{
+		n >>= 2;
+		ret += 2;
+	}
+	if ((n & 0x00000001) == 0)
+	{
+		ret += 1;
+	}
 
-    return ret;
+	return ret;
 }
 
-/* Return index of the value 
-    IF the value is not in array, return array_size */
+/* Return index of the value
+	IF the value is not in array, return array_size */
 uint32_t my_find32(
-    const int32_t* const arr,
-    const unsigned int arr_size,
-    const int32_t value)
+	const int32_t* const arr,
+	const unsigned int arr_size,
+	const int32_t value)
 {
-    enum {
-        SSE_BYTE = 16,
-        INT32_PER_SSE = 4
-    };
+	enum {
+		SSE_BYTE = 16,
+		INT32_PER_SSE = 4
+	};
 
-    const int32_t* arr_p = arr;
+	const int32_t* arr_p = arr;
 
-    // Continue untill aligned by 128bit boundary
-    for (; (uintptr_t)arr_p % SSE_BYTE != 0; arr_p++)
-    {
-        if (*arr_p == value)
-        {
-            return arr_p - arr;
-        }
+	// Continue untill aligned by 128bit boundary
+	for (; (uintptr_t)arr_p % SSE_BYTE != 0; arr_p++)
+	{
+		if (*arr_p == value)
+		{
+			return arr_p - arr;
+		}
 	}
 
 	// Compare 128bit at time
@@ -76,28 +76,28 @@ uint32_t my_find32(
 			const uint32_t first_set = ffs(compare_mask);
 			return (arr_p + first_set) - arr;
 		}
-    }
+	}
 
-    // Process if they are any remains
-    for (; arr_p < arr + arr_size; arr_p++)
-    {
-        if (*arr_p == value)
-        {
-            return arr_p - arr;
-        }
-    }
+	// Process if they are any remains
+	for (; arr_p < arr + arr_size; arr_p++)
+	{
+		if (*arr_p == value)
+		{
+			return arr_p - arr;
+		}
+	}
 
-    // Value is not in Array
-    return arr_p - arr;
+	// Value is not in Array
+	return arr_p - arr;
 }
 
 int main()
 {
-    const int32_t arr[] = { 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+	const int32_t arr[] = { 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
 
-    unsigned int find_idx = my_find32(arr, sizeof(arr) / sizeof(int32_t), 5);
+	unsigned int find_idx = my_find32(arr, sizeof(arr) / sizeof(int32_t), 5);
 
-    printf("%u", find_idx); // 15
+	printf("%u", find_idx); // 15
 
-    return 0;
+	return 0;
 }
