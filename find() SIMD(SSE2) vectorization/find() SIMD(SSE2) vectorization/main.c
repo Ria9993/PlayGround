@@ -52,7 +52,7 @@ uint32_t my_find32(
     const int32_t* arr_p = arr;
 
     // Continue untill aligned by 128bit boundary
-    for (; (uintptr_t)arr_p % SSE_BYTE; arr_p++)
+    for (; (uintptr_t)arr_p % SSE_BYTE != 0; arr_p++)
     {
         if (*arr_p == value)
         {
@@ -60,6 +60,7 @@ uint32_t my_find32(
         }
     }
 
+    // Compare 128bit at time
     for (; arr_p < (arr + arr_size) - INT32_PER_SSE; arr_p += INT32_PER_SSE)
     {
         __m128i packed_data = _mm_load_si128((__m128i*)arr_p);
@@ -75,6 +76,7 @@ uint32_t my_find32(
         }
     }
 
+    // Process if they are any remains
     for (; arr_p < arr + arr_size; arr_p++)
     {
         if (*arr_p == value)
