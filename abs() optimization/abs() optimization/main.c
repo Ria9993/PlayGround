@@ -14,7 +14,7 @@ int main() {
 
         // Trans sign only negative number
         n ^= mask;
-        n += mask & 1;
+        n -= mask;
 
         printf("VER1:%d\n", n);
     }

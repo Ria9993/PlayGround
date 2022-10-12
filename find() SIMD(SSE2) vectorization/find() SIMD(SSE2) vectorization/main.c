@@ -6,7 +6,7 @@
 
 /* Find First Set
 	Return index of first set
-	IF n == 0, Undefined behavior */
+	IF n == 0, Undefined behavior (return (32)) */
 uint32_t ffs(uint32_t n)
 {
 	uint32_t ret = 0;
@@ -62,7 +62,7 @@ uint32_t my_find32(
 		}
 	}
 
-	// Compare 128bit at time
+	// Compare 128bit at a time
 	for (; arr_p < (arr + arr_size) - INT32_PER_SSE; arr_p += INT32_PER_SSE)
 	{
 		const __m128i packed_data = _mm_load_si128((__m128i*)arr_p);
