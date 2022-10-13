@@ -55,14 +55,20 @@ int main()
 			}
 		}
 
-		// compute sum of (non-zero number % 5)
+		// compute sum
 		int sum = 0;
 		timeStart();
 		{
-			for (int i = 0; i < ITER_NUM; i++)
+			for (int i = 0; i < ITER_NUM - 2; i++)
 			{
 				if (arr[i] != 0)
-					sum += arr[i] % 5;
+					sum += (arr[i] * 5) + (arr[i] % 5) 
+						+ (arr[i + 1] * 5) + (arr[i + 1] % 5)
+						+ (arr[i + 2] * 5) + (arr[i + 2] % 5);
+				else
+					sum -= (arr[i] * 7) + (arr[i] % 7) 
+						+ (arr[i + 1] * 7) + (arr[i + 1] % 7)
+						+ (arr[i + 2] * 7) + (arr[i + 2] % 7);;
 			}
 		}
 		timeEnd();
