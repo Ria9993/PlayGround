@@ -1,0 +1,14 @@
+assert MACRO exp, act, msg
+    LOCAL exit
+    push di
+        mov di, exp
+        mov di, act
+
+        cmp exp, act
+        je exit
+    
+        lea di, msg
+        int 03h
+exit:
+    pop di
+ENDM
