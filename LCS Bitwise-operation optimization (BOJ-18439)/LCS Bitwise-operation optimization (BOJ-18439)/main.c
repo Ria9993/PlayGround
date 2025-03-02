@@ -1,3 +1,4 @@
+// https://koosaga.com/245
 // http://www.secmem.org/blog/2019/09/12/lcs-with-bitset/
 
 #define _CRT_SECURE_NO_WARNINGS
